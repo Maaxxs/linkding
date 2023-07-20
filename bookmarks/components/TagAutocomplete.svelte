@@ -21,7 +21,7 @@
     async function init() {
         // For now we cache all tags on load as the template did before
         try {
-            tags = await apiClient.getTags({limit: 1000, offset: 0});
+            tags = await apiClient.getTags({limit: 10000, offset: 0});
             tags.sort((left, right) => left.name.toLowerCase().localeCompare(right.name.toLowerCase()))
         } catch (e) {
             console.warn('TagAutocomplete: Error loading tag list');
