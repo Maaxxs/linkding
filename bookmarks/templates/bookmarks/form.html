@@ -7,7 +7,7 @@
   <div class="form-group {% if form.url.errors %}has-error{% endif %}">
     <label for="{{ form.url.id_for_label }}" class="form-label">URL</label>
     <div class="has-icon-right">
-      {{ form.url|add_class:"form-input"|attr:"autofocus"|attr:"placeholder: " }}
+      {{ form.url|add_class:"form-input"|attr:"placeholder: " }}
       <i class="form-icon loading"></i>
     </div>
     {% if form.url.errors %}
@@ -47,7 +47,7 @@
               type="button">Clear
       </button>
     </div>
-    {{ form.description|add_class:"form-input"|attr:"rows:3" }}
+    {{ form.description|add_class:"form-input"|attr:"rows:10" }}
     {{ form.description.errors }}
   </div>
   <div class="form-group">
@@ -157,6 +157,11 @@
 
             // Prefill form with existing bookmark data
             if (existingBookmark) {
+              const date_options = { year: 'numeric', month: 'short', day: '2-digit' };
+              const date_added = new Date(existingBookmark.date_added);
+              const date_added_fmt = new Intl.DateTimeFormat("en-US", date_options).format(date_added);
+
+              bookmarkExistsHint.innerHTML = "This URL was already bookmarked on <b>" + date_added_fmt +"</b>. The form has been pre-filled with the existing bookmark, and saving the form will update the existing bookmark.";
               // Workaround: tag input will be replaced by tag autocomplete, so
               // defer getting the input until we need it
               const tagsInput = document.getElementById('{{ form.tag_string.id_for_label }}');

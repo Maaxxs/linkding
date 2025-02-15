@@ -14,7 +14,7 @@ class Cache {
     if (!this.tagsPromise) {
       this.tagsPromise = this.api
         .getTags({
-          limit: 5000,
+          limit: 10000,
           offset: 0,
         })
         .then((tags) =>

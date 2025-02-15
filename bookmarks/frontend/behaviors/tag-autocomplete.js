@@ -20,6 +20,7 @@ class TagAutocomplete extends Behavior {
         value: input.value,
         placeholder: input.getAttribute("placeholder") || "",
         variant: input.getAttribute("variant"),
+        autofocus: true,
       },
     });
 
