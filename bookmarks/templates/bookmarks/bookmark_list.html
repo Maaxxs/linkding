@@ -34,7 +34,7 @@
             </div>
           {% endif %}
           {% if bookmark_list.description_display == 'inline' %}
-            <div class="description inline truncate">
+            <div class="description inline">
               {% if bookmark_item.tag_names %}
                 <span class="tags">
                   {% for tag_name in bookmark_item.tag_names %}
@@ -44,7 +44,7 @@
               {% endif %}
               {% if bookmark_item.tag_names and bookmark_item.description %} | {% endif %}
               {% if bookmark_item.description %}
-                <span>{{ bookmark_item.description }}</span>
+                <div class="markdown">{% markdown bookmark_item.description %}</div>
               {% endif %}
             </div>
           {% else %}
